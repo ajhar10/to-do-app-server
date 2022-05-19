@@ -23,7 +23,6 @@ async function run() {
         await client.connect();
         const toDoCollection = client.db("toDoApp").collection("todos");
 
-        // get todos
         app.get('/todos', async (req, res) => {
             const query = {};
             const cursor = toDoCollection.find(query);
@@ -31,7 +30,6 @@ async function run() {
             res.send(result);
         })
 
-        // get a todo
         app.get('/todos/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) };
